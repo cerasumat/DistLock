@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DistLock.Locker.Redis
+namespace DistLock.Locker.Etcd
 {
-	public class RedisLockerFactory : ILockerFactory
+	public class EtcdLockerFactory : ILockerFactory
 	{
 		public void Dispose()
 		{
