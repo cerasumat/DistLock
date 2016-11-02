@@ -1,2 +1,2 @@
 # DistLock
-distrubute lock impleted by redis and etcd
+distribute lock impleted by redis and etcd
