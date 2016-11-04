@@ -49,6 +49,8 @@
     <Compile Include="ILocker.cs" />
     <Compile Include="ILockerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Redis\RedisConnection.cs" />
+    <Compile Include="Redis\RedisLockEndPoint.cs" />
     <Compile Include="Redis\RedisLocker.cs" />
     <Compile Include="Redis\RedisLockerFactory.cs" />
   </ItemGroup>

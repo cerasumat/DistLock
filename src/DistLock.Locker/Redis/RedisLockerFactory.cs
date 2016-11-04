@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using StackExchange.Redis;
@@ -16,9 +15,9 @@ namespace DistLock.Locker.Redis
 		private const int DefaultConfigCheckSeconds = 10;
 		private readonly IList<RedisConnection> _redisConnections;
 
-		public RedisLockerFactory(IEnumerable<EndPoint> redisEndPoints):this(redisEndPoints.ToArray()){}
+		public RedisLockerFactory(IEnumerable<EndPoint> redisEndPoints) : this(redisEndPoints.ToArray()){}
 
-		public RedisLockerFactory(IEnumerable<RedisLockEndPoint> redisEndPoints):this(redisEndPoints.ToArray()){}
+		public RedisLockerFactory(IEnumerable<RedisLockEndPoint> redisEndPoints) : this(redisEndPoints.ToArray()){}
 
 		public RedisLockerFactory(params EndPoint[] redisEndPoints)
 		{
@@ -36,39 +35,52 @@ namespace DistLock.Locker.Redis
 
 		public void Dispose()
 		{
-			throw new NotImplementedException();
+			foreach (var redisConnection in _redisConnections)
+			{
+				redisConnection.ConnectionMultiplexer.Dispose();
+			}
 		}
 
 		public ILocker Create(string lockName, long ttlInMillis)
 		{
-			throw new NotImplementedException();
+			return RedisLocker.Create(_redisConnections, lockName, TimeSpan.FromMilliseconds(ttlInMillis));
 		}
 
 		public ILocker Create(string lockName, long ttlInMillis, long waitInMillis, long retryInMillis)
 		{
-			throw new NotImplementedException();
+			return RedisLocker.Create(_redisConnections, lockName, TimeSpan.FromMilliseconds(ttlInMillis),
+				TimeSpan.FromMilliseconds(waitInMillis), TimeSpan.FromMilliseconds(retryInMillis));
 		}
 
 		public ILocker Create(string lockName, long ttlInMillis, long waitInMillis, long retryInMillis,
 			CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			return RedisLocker.Create(_redisConnections, lockName, TimeSpan.FromMilliseconds(ttlInMillis),
+				TimeSpan.FromMilliseconds(waitInMillis), TimeSpan.FromMilliseconds(retryInMillis), cancellationToken);
 		}
 
-		public Task<ILocker> CreateAsync(string lockName, long ttlInMillis)
+		public async Task<ILocker> CreateAsync(string lockName, long ttlInMillis)
 		{
-			throw new NotImplementedException();
+			return
+				await
+					RedisLocker.CreateAsync(_redisConnections, lockName, TimeSpan.FromMilliseconds(ttlInMillis)).ConfigureAwait(false);
 		}
 
-		public Task<ILocker> CreateAsync(string lockName, long ttlInMillis, long waitInMillis, long retryInMillis)
+		public async Task<ILocker> CreateAsync(string lockName, long ttlInMillis, long waitInMillis, long retryInMillis)
 		{
-			throw new NotImplementedException();
+			return
+				await
+					RedisLocker.CreateAsync(_redisConnections, lockName, TimeSpan.FromMilliseconds(ttlInMillis),
+						TimeSpan.FromMilliseconds(waitInMillis), TimeSpan.FromMilliseconds(retryInMillis)).ConfigureAwait(false);
 		}
 
-		public Task<ILocker> CreateAsync(string lockName, long ttlInMillis, long waitInMillis, long retryInMillis,
+		public async Task<ILocker> CreateAsync(string lockName, long ttlInMillis, long waitInMillis, long retryInMillis,
 			CancellationToken cancellationToken)
 		{
-			throw new NotImplementedException();
+			return
+				await
+					RedisLocker.CreateAsync(_redisConnections, lockName, TimeSpan.FromMilliseconds(ttlInMillis),
+						TimeSpan.FromMilliseconds(waitInMillis), TimeSpan.FromMilliseconds(retryInMillis), cancellationToken).ConfigureAwait(false);
 		}
 
 		private static IList<RedisConnection> CreateRedisConnections(ICollection<RedisLockEndPoint> redisEndPoints)
