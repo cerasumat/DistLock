@@ -53,6 +53,8 @@
     <Compile Include="Redis\RedisLockEndPoint.cs" />
     <Compile Include="Redis\RedisLocker.cs" />
     <Compile Include="Redis\RedisLockerFactory.cs" />
+    <Compile Include="Redis\RedisScripts.cs" />
+    <Compile Include="ThreadSafeRandom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

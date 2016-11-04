@@ -14,15 +14,8 @@ namespace DistLock.Locker.Etcd
 			throw new NotImplementedException();
 		}
 
+		public string LockId { get; private set; }
 		public bool IsAcquired { get; private set; }
-		public bool Lock(LockEntity locker)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool Unlock(LockEntity locker)
-		{
-			throw new NotImplementedException();
-		}
+		public int ExtendCount { get; private set; }
 	}
 }
