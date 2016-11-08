@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistLock.Entity", "src\Dist
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistLock.Locker", "src\DistLock.Locker\DistLock.Locker.csproj", "{F1CA2D54-22FD-4370-B931-FF8B68D8B428}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockTest", "test\LockTest\LockTest.csproj", "{105DDF21-908C-4CEF-BEB6-36942A198787}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{F1CA2D54-22FD-4370-B931-FF8B68D8B428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1CA2D54-22FD-4370-B931-FF8B68D8B428}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1CA2D54-22FD-4370-B931-FF8B68D8B428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{105DDF21-908C-4CEF-BEB6-36942A198787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{105DDF21-908C-4CEF-BEB6-36942A198787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{105DDF21-908C-4CEF-BEB6-36942A198787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{105DDF21-908C-4CEF-BEB6-36942A198787}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,5 +53,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8AAE2510-4EBB-4F57-AAE2-DF182CFA5DA9} = {42ECCEF4-B356-4361-98B1-9547382736C9}
 		{F1CA2D54-22FD-4370-B931-FF8B68D8B428} = {42ECCEF4-B356-4361-98B1-9547382736C9}
+		{105DDF21-908C-4CEF-BEB6-36942A198787} = {9332B62F-57C1-4CD8-8FB8-C6517C494CFC}
 	EndGlobalSection
 EndGlobal
