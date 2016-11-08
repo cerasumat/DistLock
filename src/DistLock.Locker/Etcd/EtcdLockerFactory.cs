@@ -11,9 +11,9 @@ namespace DistLock.Locker.Etcd
 	{
 		private readonly IList<EtcdConnection> _etcdConnections;
 
-		public EtcdLockerFactory(IEnumerable<string> etcdUrls) : this(etcdUrls.ToArray()) { }
+		public EtcdLockerFactory(IEnumerable<Uri> etcdUrls) : this(etcdUrls.ToArray()) { }
 
-		public EtcdLockerFactory(params string[] etcdUrls)
+		public EtcdLockerFactory(params Uri[] etcdUrls)
 		{
 			_etcdConnections = CreateEtcdConnections(etcdUrls);
 		}
@@ -59,7 +59,7 @@ namespace DistLock.Locker.Etcd
 			throw new NotImplementedException();
 		}
 
-		private static IList<EtcdConnection> CreateEtcdConnections(ICollection<string> etcdUrls)
+		private static IList<EtcdConnection> CreateEtcdConnections(ICollection<Uri> etcdUrls)
 		{
 			if (!etcdUrls.Any())
 			{

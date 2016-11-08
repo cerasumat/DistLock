@@ -20,8 +20,8 @@ namespace DistLock.Locker.Etcd
 		private readonly TimeSpan? _waitTime;
 		private readonly TimeSpan? _retryTime;
 		private readonly CancellationToken _cancellationToken;
-		private readonly TimeSpan _minExpiryTime = TimeSpan.FromMilliseconds(10);
-		private readonly TimeSpan _minRetryTime = TimeSpan.FromMilliseconds(10);
+		private readonly TimeSpan _minExpiryTime = TimeSpan.FromMilliseconds(1000);
+		private readonly TimeSpan _minRetryTime = TimeSpan.FromMilliseconds(1000);
 
 		public readonly string KeyName;
 
@@ -120,7 +120,7 @@ namespace DistLock.Locker.Etcd
 		{
 			// Add 2 milliseconds to the drift to account for etcd expires precision,
 			// which is 1 milliescond, plus 1 millisecond min drift for small TTLs.
-			var driftTicks = ((long)(_expiryTime.Ticks * _clockDriftFactor)) + TimeSpan.FromMilliseconds(2).Ticks;
+			var driftTicks = ((long)(_expiryTime.Ticks * _clockDriftFactor)) + TimeSpan.FromMilliseconds(20).Ticks;
 			var validityTicks = _expiryTime.Ticks - (Stopwatch.GetTimestamp() - startTick) - driftTicks;
 			return validityTicks;
 		}

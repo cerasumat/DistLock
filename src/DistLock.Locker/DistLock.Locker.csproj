@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="StackExchange.Redis">
       <HintPath>..\..\packages\StackExchange.Redis.Mono.1.0.0\lib\StackExchange.Redis.dll</HintPath>
     </Reference>
@@ -44,8 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Etcd\EtcdConnection.cs" />
     <Compile Include="Etcd\EtcdLocker.cs" />
     <Compile Include="Etcd\EtcdLockerFactory.cs" />
+    <Compile Include="Etcd\EtcdResponse.cs" />
+    <Compile Include="Etcd\Node.cs" />
+    <Compile Include="ExtentionMethods.cs" />
     <Compile Include="ILocker.cs" />
     <Compile Include="ILockerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
