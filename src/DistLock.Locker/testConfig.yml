@@ -3,6 +3,6 @@ MyConfig:
   EsConn: 192.168.40.12
   RedisExpireTime: 100
 MyConfig2:
-  MySqlConn: 192.168.10.4
-  EsConn: 192.168.40.11
-  RedisExpireTime: 77
+  MySqlConn1: 192.168.10.4
+  EsConn2: 192.168.40.11
+  RedisExpireTime3: 77
